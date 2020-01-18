@@ -32,23 +32,34 @@
 	\end{enumerate}
 \section{Machine Learning Fundamentals}
 	\begin{tabular}{c c c}
-	  Euklid Distanz & Kosinus Ähnlichkeit & Formel\\
+	  Euklid Distanz & Kosinus Ähnlichkeit & Formel Kosinus Similarity\\
     	  \includegraphics[width=0.25\linewidth]{euclide_distance.png} & \includegraphics[width=0.25\linewidth]{cosine_similarity.png} & \includegraphics[width=0.25\linewidth]{cosine_similarity_formula.png} \\
 	\end{tabular}
 \section{Supervised Learning Basics}
-\begin{figure}[H]
-	\includegraphics[width=0.5\linewidth]{true_positive}
-\end{figure}
-\begin{tabular}{c c}
-	$Accuracy = \frac{TP + TN}{Total}$ & 	$Errorrate = \frac{FP + FN}{Total}$ \\
-	$Sensitivity = \frac{TP}{Actual Yes}$ = $\frac{TP}{TP + FN}$ & $Specificity = \frac{TN}{ActualNo} = \frac{TN}{TN + FP}$ \\
-	$Precision = \frac{TP}{Predicted Yes} = \frac{TP}{TP + FP}$
+\begin{tabular}{l l}
+	\parbox[c]{0.3\textwidth}{\includegraphics[width=\linewidth]{true_positive}} &
+	\begin{tabular}{l}
+		$Accuracy = \frac{TP + TN}{Total}$ \\ $Errorrate = \frac{FP + FN}{Total}$ \\
+		$Sensitivity = \frac{TP}{Actual Yes}$ = $\frac{TP}{TP + FN}$ \\ $Specificity = \frac{TN}{ActualNo} = \frac{TN}{TN + FP}$ \\ 
+		$Precision = \frac{TP}{Predicted Yes} = \frac{TP}{TP + FP}$
+	\end{tabular}
+	
 \end{tabular}
 \section{Linear Regression}
-	Das Modell hat generell die folgende Form:
-	$$y = h_\theta(x) = \theta_0 + \theta_1 * x$$
+	Das Modell hat generell die folgende Form: $y = h_\theta(x) = \theta_0 + \theta_1 x$.
+	
+	Mit $\bar{x}$ und $\bar{y}$ als Mittelwerte der Datenreihe, können somit die Werte $\theta_1$ und $\theta_0$ berechnet werden. \footnote{Bei $var^{(i)}$ ist $i$ ein Index für den Datenpunkt und kein Exponent.}
+	\[ \theta_1 = \frac{\sum_{i=1}^{n}(y^{(i)}-\bar{y})(x^{(i)}-\bar{x})}{\sum_{i=1}^{n}(x^{(i)}-\bar{x})} = \frac{S_{xy}}{S_{xx}} \qquad
+	\theta_0 = \bar{y}-\theta_1 \bar{x} \]
+
+	Um die best möglichen $\theta_0$ und $\theta_1$ zu bekommen wird die Kostenfunktion
+	\[ J(\theta_0,\theta_1)=\frac{1}{2 n} \sum_{i=1}^{n} [y^{(i)}-h_\theta(x^{(i)})]^2 \] minimiert, wobei $n$ für die Grösse des Trainingsets steht.
+
+%$$SSE = \sum_{i=1}^{n} (e^{(i)}) = \sum_{i=1}^{n}[(y^{(i)}-\bar{y})-\theta_1 (x^{(i)}-\bar{x})]$$ 
+%$$\frac{d}{d\theta_1}SSE = -2 S_xy + 2 \theta_1 S_{xx} = 0$$
 
 	Korrelation liegt immer zwischen $-1 <= r <= 1$.
-	$r = 0$ bedeutet, dass keine Korrelation herrscht und umso weiter $r$ von $0$ abweicht, 
-	desto höher die Korrelation.
+	$r = 0$ bedeutet keine Korrelation und $|r| = 1$ vollständige Korrelation.
+
+\section{Gradient Descent}
 \end{document}

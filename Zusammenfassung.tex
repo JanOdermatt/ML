@@ -1,10 +1,12 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{listings}
 \usepackage{geometry}
 \geometry{left=10mm, right=10mm, top=10mm, bottom=15mm}
 %\usepackage{fullpage}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{amsmath}
 \usepackage{blindtext}
 \graphicspath{ {./bilder/} }
 \renewcommand{\baselinestretch}{2}
@@ -54,6 +56,15 @@
 
 	Um die best möglichen $\theta_0$ und $\theta_1$ zu bekommen wird die Kostenfunktion
 	\[ J(\theta_0,\theta_1)=\frac{1}{2 n} \sum_{i=1}^{n} [y^{(i)}-h_\theta(x^{(i)})]^2 \] minimiert, wobei $n$ für die Grösse des Trainingsets steht.
+	Diese wird mit $\theta = (X^T X)^-1 X^T y$ umgesetzt.
+	In python wird das mit X als $n \times m$ Matrix, bei der eine Spalte mit Einsen aufgefüllt wurde und 
+	$\theta = 
+	\begin{bmatrix}
+	\theta_0 \\ \theta_1 \\ ... \\ \theta_m
+	\end{bmatrix}$ definiert wird.
+	\begin{lstlisting}
+		theta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
+	\end{lstlisting}
 
 %$$SSE = \sum_{i=1}^{n} (e^{(i)}) = \sum_{i=1}^{n}[(y^{(i)}-\bar{y})-\theta_1 (x^{(i)}-\bar{x})]$$ 
 %$$\frac{d}{d\theta_1}SSE = -2 S_xy + 2 \theta_1 S_{xx} = 0$$

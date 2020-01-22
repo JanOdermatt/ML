@@ -73,9 +73,15 @@
 	Korrelation liegt immer zwischen $-1 <= r <= 1$.
 	$r = 0$ bedeutet keine Korrelation und $|r| = 1$ vollständige Korrelation.
 \section{Logistische Regression}
-Logistische Regression zielt darauf ab eine binäre Zuordnung vorzunehmen (z.B. Brustkrebs oder nicht; Spam-Mail oder nicht etc.).
-Dabei können die unabhängigen Variablen numerisch (12mm) oder kategorisch (mag Skifahren) sein.
-
-Die Logistische Funktion nennt sich auch "Siegmoid Funktion" und lautet wie folgt:
-$$\sigma(z) = \frac{1}{1+e^{-z}}, z \in \mathbb{R}$$
+	Logistische Regression zielt darauf ab eine binäre Zuordnung vorzunehmen (z.B. Brustkrebs oder nicht; Spam-Mail oder nicht etc.).
+	Dabei können die unabhängigen Variablen numerisch (12mm) oder kategorisch (mag Skifahren) sein.
+	
+	Die Logistische Funktion nennt sich auch "Siegmoid Funktion" und lautet wie folgt:
+	$$\sigma(z) = \frac{1}{1+e^{-z}} = \frac{e^z}{e^z+1}, z \in \mathbb{R}$$
+	$$\sigma^{\prime}(x) = \sigma(z) (1-\sigma(z))$$
+	$$\sigma^{\prime\prime}(z)= \sigma(z)(1-\sigma(z))(1-2\sigma(z))$$
+	
+	Wenn $z > 0$ wird die Aussage als wahr (Wahrscheinlichkeit über 0.5) und sonst als falsch interpretiert.
+	
+	$z$ ist mit $z=x^T \theta = \theta_0 + \theta_1 x_1 + \theta_2 x_2$ gegeben.
 \end{document}

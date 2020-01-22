@@ -2,22 +2,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{color}
-%%\lstset{%frame=tb,
-%	language=Python,
-%%	aboveskip=3mm,
-%%	belowskip=3mm,
-%%	showstringspaces=false,
-%%	columns=flexible,
-%%	basicstyle={\small\ttfamily},
-%%	numbers=none,
-%%	numberstyle=\tiny\color{gray},
-%	keywordstyle=\color{blue},
-%	commentstyle=\color{dkgreen},
-%	stringstyle=\color{mauve},
-%%	breaklines=true,
-%%	breakatwhitespace=true,
-%%	tabsize=3
-%}
 \usepackage{geometry}
 \geometry{left=10mm, right=10mm, top=10mm, bottom=15mm}
 %\usepackage{fullpage}
@@ -71,23 +55,20 @@
 	\[ \theta_1 = \frac{\sum_{i=1}^{n}(y^{(i)}-\bar{y})(x^{(i)}-\bar{x})}{\sum_{i=1}^{n}(x^{(i)}-\bar{x})} = \frac{S_{xy}}{S_{xx}} \qquad
 	\theta_0 = \bar{y}-\theta_1 \bar{x} \]
 
+\section{Gradient Descent}
 	Um die best möglichen $\theta_0$ und $\theta_1$ zu bekommen wird die Kostenfunktion
 	\[ J(\theta_0,\theta_1)=\frac{1}{2 n} \sum_{i=1}^{n} [y^{(i)}-h_\theta(x^{(i)})]^2 \] minimiert, wobei $n$ für die Grösse des Trainingsets steht.
-	Diese wird mit $\theta = (X^T X)^-1 X^T y$ umgesetzt.
-	In python wird das mit X als $n \times m$ Matrix, bei der eine Spalte mit Einsen aufgefüllt wurde und 
+	Diese wird mit $\theta = (X^T X)^{-1} X^T y$ umgesetzt. 
+	In python wird das mit X als $n \times m$ Matrix, bei der die erste Spalte mit Einsen aufgefüllt wurde und mit y als Zielwert
 	$\theta = 
 	\begin{bmatrix}
-	\theta_0 \\ \theta_1 \\ ... \\ \theta_m
+	\theta_0 \\[0.1pt] \theta_1 \\[0.1pt] ... \\[0.1pt] \theta_m
 	\end{bmatrix}$ definiert wird.
+	
 	\begin{lstlisting}
-		theta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
+	theta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
 	\end{lstlisting}
-
-%$$SSE = \sum_{i=1}^{n} (e^{(i)}) = \sum_{i=1}^{n}[(y^{(i)}-\bar{y})-\theta_1 (x^{(i)}-\bar{x})]$$ 
-%$$\frac{d}{d\theta_1}SSE = -2 S_xy + 2 \theta_1 S_{xx} = 0$$
-
+	
 	Korrelation liegt immer zwischen $-1 <= r <= 1$.
 	$r = 0$ bedeutet keine Korrelation und $|r| = 1$ vollständige Korrelation.
-
-\section{Gradient Descent}
 \end{document}

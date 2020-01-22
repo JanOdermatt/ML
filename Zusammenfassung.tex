@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{amssymb}
 \usepackage{listings}
 \usepackage{color}
 \usepackage{geometry}
@@ -71,4 +72,10 @@
 	
 	Korrelation liegt immer zwischen $-1 <= r <= 1$.
 	$r = 0$ bedeutet keine Korrelation und $|r| = 1$ vollständige Korrelation.
+\section{Logistische Regression}
+Logistische Regression zielt darauf ab eine binäre Zuordnung vorzunehmen (z.B. Brustkrebs oder nicht; Spam-Mail oder nicht etc.).
+Dabei können die unabhängigen Variablen numerisch (12mm) oder kategorisch (mag Skifahren) sein.
+
+Die Logistische Funktion nennt sich auch "Siegmoid Funktion" und lautet wie folgt:
+$$\sigma(z) = \frac{1}{1+e^{-z}}, z \in \mathbb{R}$$
 \end{document}

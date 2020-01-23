@@ -106,4 +106,31 @@
 	-log(h_\theta(x)) & wenn\;y = 1 \\
 	-log(1-h_\theta(x)) & wenn\;y = 0
 	\end{cases}$$
+	Damit ergibt sich die Formel für Gradient Descent wie folgt:
+	$$\theta_{k+1}=\theta_k-\alpha\frac{1}{n}X^T(\sigma(X\theta_k)-y)$$
+	
+	Codebeispiel zum trainieren von $\theta$
+	\begin{lstlisting}
+	def sigmoid(z):
+		return 1/(1+np.exp(-z))
+	
+	def cost_function(X, y, theta):
+		y_hat = sigmoid(np.dot(X,theta))
+		J_i =-y*np.log(y_hat)-(1-y)*np.log(1-y_hat)
+		J = J_i.sum()/len(y)
+		return J
+	
+	def update_theta(X,y, theta, alpha):
+		theta -= alpha * np.dot(X.T,sigmoid(np.dot(X, theta))-y)/len(y)
+		return theta
+	
+	def train(X, y, theta, alpha, kmax):
+		cost_history=[]
+		for i in range(kmax):
+			theta=update_theta(X,y,theta,alpha)
+			cost = cost_function(X,y,theta)
+			cost_history.append(cost)
+		return theta, cost_history
+	\end{lstlisting}
+	Danach wird zuerst ein $\theta$ definiert, wo die vorgegebenen startwerte angegeben werden. Daraus trainiert der Algorythmus danach mit $\alpha$ als Schrittgrösse und \textbf{kmax} als Anzahl Zyklen die optimalen Werte für $\theta$
 \end{document}

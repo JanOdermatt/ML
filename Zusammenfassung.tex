@@ -72,19 +72,18 @@
 	
 	Korrelation liegt immer zwischen $-1 <= r <= 1$.
 	$r = 0$ bedeutet keine Korrelation und $|r| = 1$ vollständige Korrelation.
-\section{Logistische Regression}
+\section{Logistische Regression (eigentlich Klassifikation)}
 	Logistische Regression zielt darauf ab eine binäre Zuordnung vorzunehmen (z.B. Brustkrebs oder nicht; Spam-Mail oder nicht etc.).
 	Dabei können die unabhängigen Variablen numerisch (12mm) oder kategorisch (mag Skifahren) sein.
 	
 	Die Logistische Funktion nennt sich auch "Siegmoid Funktion" und lautet wie folgt:
 	$$\sigma(z) = \frac{1}{1+e^{-z}} = \frac{e^z}{e^z+1}, z \in \mathbb{R}$$
+	Die Logistische Funktion ist auch die neue Hypothese: $$h_\theta(\theta^Tx)=\frac{1}{1+e^{\theta^Tx}}$$
+	Die Ableitungen der Logistischen Funktion sehen folgendermassen aus.
 	$$\sigma^{\prime}(x) = \sigma(z) (1-\sigma(z))$$
 	$$\sigma^{\prime\prime}(z)= \sigma(z)(1-\sigma(z))(1-2\sigma(z))$$
 	
 	Wenn $z > 0$ wird die Aussage als wahr (Wahrscheinlichkeit über 0.5) und sonst als falsch interpretiert.
 	
 	$z$ ist mit $z=x^T \theta = \theta_0 + \theta_1 x_1 + \theta_2 x_2$ gegeben.
-	
-	Mit der Kostenfunktion $$J(\theta) = \frac{1}{2 n} \sum_{i=1}^{n}(h(\theta,x^{(i)})-y^{(i)})^2$$ wo $h(\theta,x^{(i)})$ die Vorhersage von $y$ ist und als $$h(\theta_k,x^{(i)})= (x^{(i)})^T\theta=\theta_0+\theta_1x_1^{(i)}+\theta_2x_2^{(i)}+...+\theta_mx_m^{(i)}$$
-	ausgeschrieben wird
 \end{document}

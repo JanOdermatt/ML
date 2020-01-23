@@ -57,8 +57,8 @@
 	\theta_0 = \bar{y}-\theta_1 \bar{x} \]
 
 \section{Gradient Descent}
-	Um die best möglichen $\theta_0$ und $\theta_1$ zu bekommen wird die Kostenfunktion
-	\[ J(\theta_0,\theta_1)=\frac{1}{2 n} \sum_{i=1}^{n} [y^{(i)}-h_\theta(x^{(i)})]^2 \] minimiert, wobei $n$ für die Grösse des Trainingsets steht.
+	Mit der Kostenfunktion $$J(\theta) = \frac{1}{2 n} \sum_{i=1}^{n}(h(\theta,x^{(i)})-y^{(i)})^2$$ wo $h(\theta,x^{(i)})$ die Vorhersage von $y$ ist und als $$h(\theta_k,x^{(i)})= (x^{(i)})^T\theta=\theta_0+\theta_1x_1^{(i)}+\theta_2x_2^{(i)}+...+\theta_mx_m^{(i)}$$
+	ausgeschrieben wird, kann $\theta$ optimiert werden.	
 	Diese wird mit $\theta = (X^T X)^{-1} X^T y$ umgesetzt. 
 	In python wird das mit X als $n \times m$ Matrix, bei der die erste Spalte mit Einsen aufgefüllt wurde und mit y als Zielwert
 	$\theta = 
@@ -84,4 +84,7 @@
 	Wenn $z > 0$ wird die Aussage als wahr (Wahrscheinlichkeit über 0.5) und sonst als falsch interpretiert.
 	
 	$z$ ist mit $z=x^T \theta = \theta_0 + \theta_1 x_1 + \theta_2 x_2$ gegeben.
+	
+	Mit der Kostenfunktion $$J(\theta) = \frac{1}{2 n} \sum_{i=1}^{n}(h(\theta,x^{(i)})-y^{(i)})^2$$ wo $h(\theta,x^{(i)})$ die Vorhersage von $y$ ist und als $$h(\theta_k,x^{(i)})= (x^{(i)})^T\theta=\theta_0+\theta_1x_1^{(i)}+\theta_2x_2^{(i)}+...+\theta_mx_m^{(i)}$$
+	ausgeschrieben wird
 \end{document}

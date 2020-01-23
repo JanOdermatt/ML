@@ -3,9 +3,23 @@
 \usepackage{amssymb}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{titleps}
+
+\newpagestyle{mystyle}{
+	\sethead[\thepage][\Author][]{}{\Author}{\thepage}
+}
+\pagestyle{mystyle}
+
+\author{First Author \and Second Author}
+\title{The title}
+
+\makeatletter
+\newcommand\Author{Jan Odermatt}
+\let\Title\@title
+\makeatother
+
 \usepackage{geometry}
-\geometry{left=10mm, right=10mm, top=10mm, bottom=15mm}
-%\usepackage{fullpage}
+\geometry{left=10mm, right=10mm, top=15mm, bottom=15mm}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}

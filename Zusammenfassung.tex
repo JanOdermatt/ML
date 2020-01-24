@@ -108,8 +108,8 @@
 	\end{cases}$$
 	Damit ergibt sich die Formel für Gradient Descent wie folgt:
 	$$\theta_{k+1}=\theta_k-\alpha\frac{1}{n}X^T(\sigma(X\theta_k)-y)$$
-	
-	Codebeispiel zum trainieren von $\theta$
+	\newpage
+	\subsection{Codebeispiel zum trainieren von $\theta$}
 	\begin{lstlisting}
 	def sigmoid(z):
 		return 1/(1+np.exp(-z))
@@ -133,4 +133,33 @@
 		return theta, cost_history
 	\end{lstlisting}
 	Danach wird zuerst ein $\theta$ definiert, wo die vorgegebenen startwerte angegeben werden. Daraus trainiert der Algorythmus danach mit $\alpha$ als Schrittgrösse und \textbf{kmax} als Anzahl Zyklen die optimalen Werte für $\theta$.
+	
+	\section{Gruppierungs und Zuordnungs-Regeln}
+	\subsection{K-Means als Pseudo Code}
+	\begin{enumerate}
+		\item Eingabe: Anzahl Gruppierungen $k>0$ und die Datenpunkte $x_1,...,x_n \in \mathbb{R}^m$
+		\item Zufällige $k$ Gruppierungs-Zentrums $\mu_1,...,\mu_k \in \mathbb{R}^m$
+		\item Widerholen bis es konvergiert:
+		\begin{enumerate}
+			\item Jeden Datenpunkt $x_i$ zum nächst gelegenen Gruppierungs-Zentrum $\mu_j$ zuordnen
+			\item Jedes Gruppierungs-Zentrum auf den aktuellen Mittelpunkt aller zugeordneten Punkte aktualisieren
+		\end{enumerate}
+	\end{enumerate}
+	\subsection{Zuordnungs-Regeln anhand Einkaufstransaktionen}
+	Als "Support" zählt der Prozentanteil, von Transaktionen welche ein gesuchtes Produkt enthalten:
+	$$support([i_1,...,i_n])=\frac{Anzahl\;Eink\ddot{a}ufe\;mit\;Gesuchtem\;Produkt}{Totale\;Anzahl\;Eink\ddot{a}ufe}$$
+	$$support(X\rightarrow Y)=support(X\cup Y)$$
+	wobei $i_j$ für einen Einkaufswagen steht.
+	
+	Weiter gibt es die Konfidenz, welche mit $$confidence(X\rightarrow Y)=\frac{X \cup Y}{X}$$
+	angegeben wird. Die Konfidenz gibt an, wie oft $Y$ vorkommt, wenn $X$ eingekauft wurde. Damit eine Regel nicht als stark angeschaut wird, nur weil ein Y sehr häufig gekauft wird, gibt es noch den "lift" Wert:
+	$$lift(X \rightarrow Y) = \frac{support(X \cup Y)}{support(X) \cdot support(Y)}$$
+	Lift = 1 heisst, dass X und Y statistisch unabhängig sind.
+	Lift $<$ 1 heisst, dass X und Y weniger oft zusammen vorkommen als statistisch erwartet (sind antikorrelierend).
+	Lift $>$ 1 heisst, dass X und Y öfters zusammen vorkommen, als statistisch zu erwarten war (korrelieren zueinander).
+	\section{Debugging}
+	\subsection{Erklärung Bias und Varianz}
+	\begin{figure}[H]
+		\includegraphics[width=0.6\linewidth]{beschreibung_bias_variance}
+	\end{figure}
 \end{document}
